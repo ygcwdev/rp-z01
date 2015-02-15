@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>HTML5 Images Slider</title>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+<div style="width:300px;height:235px;overflow: hidden; border: #666666 solid 1px;" id="d1">
+	<table>
+		<tr>
+			<td><img src="01.png" /></td>
+			<td><img src="02.png" /></td>
+			<td><img src="03.png" /></td>
+			<td><img src="04.png" /></td>
+		</tr>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+var direct = 50;
+var flag = true; //false ���� true����
+function MoveDiv() {
+	var d1 = document.getElementById("d1");
+	var imgObj = d1.getElementsByTagName("img");
+	
+	
+	if(!flag) {
+		d1.scrollLeft += direct;
+		if(d1.scrollLeft == d1.scrollWidth-imgObj[imgObj.length-1].width) 
+		  flag = true;
+	}
+	else {
+		d1.scrollLeft -= direct;
+		if(d1.scrollLeft == 0) 
+		  flag = false;
+	}
+	$("#d1").scrollLeft(50);
+	console.info(imgObj[imgObj.length-1].width);
+	console.info(d1.scrollWidth);
+	window.setTimeout("MoveDiv()", 500);
+}
+MoveDiv();
+
+</script>
+</body>
+<footer>
+</footer>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>HTML5 Images Slider</title>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+<div style="overflow: hidden; border: #666666 solid 1px;" id="d1">
+	<table>
+		<tr>
+			<td><img src="01.png" /></td>
+			<td><img src="02.png" /></td>
+			<td><img src="03.png" /></td>
+			<td><img src="04.png" /></td>
+			<td><img src="05.png" /></td>
+			<td><img src="06.png" /></td>
+			<td><img src="07.png" /></td>
+			<td><img src="08.png" /></td>
+			<td><img src="09.png" /></td>
+			<td><img src="10.png" /></td>
+		</tr>
+	</table>
+</div>
+<div style="overflow: hidden; border: #666666 solid 1px;" id="d2">
+	<table>
+		<tr>
+			<td><img src="01.png" /></td>
+			<td><img src="02.png" /></td>
+			<td><img src="03.png" /></td>
+			<td><img src="04.png" /></td>
+			<td><img src="05.png" /></td>
+			<td><img src="06.png" /></td>
+			<td><img src="07.png" /></td>
+			<td><img src="08.png" /></td>
+			<td><img src="09.png" /></td>
+			<td><img src="10.png" /></td>
+		</tr>
+	</table>
+</div>
+
+  <p id="output">这里显示坐标1</p>
+  
+<script type="text/javascript">
+var cx_b=0;
+var cx_t=0;
+
+function handleTouchEvent(event) {
+    //只跟踪一次触摸
+    if (event.touches.length == 1) {
+        var output = document.getElementById("output");
+        switch (event.type) {
+            case "touchstart":
+            	event.preventDefault();
+            	cx_b = event.touches[0].clientX;
+                output.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+                break;
+            case "touchend":            	
+                output.innerHTML += "Touch ended (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
+                break;
+            case "touchmove":
+            	cx_t = event.touches[0].clientX;
+                event.preventDefault(); //阻止滚动
+                output.innerHTML += "Touch moved (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")"+event.target.nodeName;
+                MoveDiv("d1");
+                break;
+        }
+    }
+}
+var d1 = document.getElementById("d1");
+var d2 = document.getElementById("d2");
+//document.addEventListener("touchstart", handleTouchEvent, false);
+d1.addEventListener("touchstart", handleTouchEvent, false);
+d1.addEventListener("touchend", handleTouchEvent, false);
+d1.addEventListener("touchmove", handleTouchEvent, false);
+
+d2.addEventListener("touchstart", handleTouchEvent, false);
+d2.addEventListener("touchend", handleTouchEvent, false);
+d2.addEventListener("touchmove", handleTouchEvent, false);
+
+
+var direct = 50;
+var flag = true; //false ���� true����
+function MoveDiv(tid) {
+	var d1 = document.getElementById(tid);
+	var imgObj = d1.getElementsByTagName("img");
+	 var output = document.getElementById("output");
+	
+	var span=cx_t -cx_b;
+	output.innerHTML += "go "+span+"<br>";
+	if(span>0){
+		d1.scrollLeft -= direct;		
+	}else{
+		d1.scrollLeft += direct;	
+	}
+		
+
+	//window.setTimeout("MoveDiv()", 500);
+}
+//MoveDiv();
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>HTML5 Images Slider</title>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<style type="text/css">
+		.goleft{
+		   display:inline;
+		   margin-left:2px;		   
+		}
+		img{
+		width:220px;
+		}
+	</style>
+</head>
+<body>
+<div style="overflow: hidden; border: #666666 solid 1px;" id="c1">
+	<div style="width:5900px" id="d1">
+		<div class="goleft"><img src="01.png" /></div>
+		<div class="goleft"><img src="02.png" /></div>
+		<div class="goleft"><img src="03.png" /></div>
+		<div class="goleft"><img src="04.png" /></div>
+		<div class="goleft"><img src="05.png" /></div>
+		<div class="goleft"><img src="06.png" /></div>
+		<div class="goleft"><img src="07.png" /></div>
+		<div class="goleft"><img src="08.png" /></div>
+		<div class="goleft"><img src="09.png" /></div>
+		<div class="goleft"><img src="10.png" /></div>	
+	</div>	
+</div>
+
+  <p id="output">这里显示坐标1</p>
+  
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var request = {
+QueryString : function(val) {
+var uri = window.location.search;
+var re = new RegExp("" +val+ "\=([^\&\?]*)", "ig");
+return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
+},
+QueryStrings : function() {
+var uri = window.location.search;
+var re = /\w*\=([^\&\?]*)/ig;
+var retval=[];
+while ((arr = re.exec(uri)) != null)
+retval.push(arr[0]);
+return retval;
+},
+setQuery : function(val1, val2) {
+var a = this.QueryStrings();
+var retval = "";
+var seted = false;
+var re = new RegExp("^" +val1+ "\=([^\&\?]*)$", "ig");
+for(var i=0; i<a.length; i++) {
+if (re.test(a[i])) {
+seted = true;
+a[i] = val1 +"="+ val2;
+}
+}
+retval = a.join("&");
+return "?" +retval+ (seted ? "" : (retval ? "&" : "") +val1+ "=" +val2);
+}
+}
+console.info(request.QueryStrings())
+//-->
+</SCRIPT> 
+</body>
+
+</html>

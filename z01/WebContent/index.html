@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache,no-store, must-revalidate">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <title>九三学社社员之家</title>
+	<script src="jquery-1.10.2.js" ></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		  console.info("====");
+		});
+	
+	function handleTouchEvent(event) {
+	    //只跟踪一次触摸
+	    if (event.touches.length == 1) {
+	        var output = document.getElementById("output");
+	        switch (event.type) {
+	            case "touchstart":
+	            	event.preventDefault();
+	                output.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+	                break;
+	            case "touchend":	            	
+	                output.innerHTML += "Touch ended (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
+	                break;
+	            case "touchmove":
+	                event.preventDefault(); //阻止滚动
+	                output.innerHTML += "Touch moved (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";
+	                break;
+	        }
+	    }
+	}
+	document.addEventListener("touchstart", handleTouchEvent, false);
+	document.addEventListener("touchend", handleTouchEvent, false);
+	document.addEventListener("touchmove", handleTouchEvent, false);
+	</script>
+</head>
+
+<body>
+  <p id="output">这里显示坐标1</p>
+	
+</body>
+</html>
